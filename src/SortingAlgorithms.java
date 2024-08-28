@@ -40,4 +40,21 @@ public class SortingAlgorithms {
         }
         System.out.println(STR."Attemps: \{attempts}.");
     }
+    public static void selectionSorting(int[] array){
+        int attempts = 0;
+        for (int i = 0; i < array.length-1; i++) {
+            attempts++;
+            int minIndex = i;
+            for (int j = i+1; j < array.length; j++) {
+                attempts++;
+                if(array[j] < array[minIndex]){
+                    minIndex = j;
+                }
+            }
+            int temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp;
+        }
+        System.out.println(STR."Attempts: \{attempts}");
+    }
 }
