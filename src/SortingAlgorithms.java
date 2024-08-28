@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class SortingAlgorithms {
@@ -19,8 +21,7 @@ public class SortingAlgorithms {
     public static void shuffleArray(int[] array) {
         Random random = new Random();
         for (int i = array.length - 1; i > 0; i--) {
-            int j = random.nextInt(i + 1); // Generate a random index from 0 to i
-            // Swap array[i] with array[j]
+            int j = random.nextInt(i + 1);
             int temp = array[i];
             array[i] = array[j];
             array[j] = temp;
@@ -40,6 +41,11 @@ public class SortingAlgorithms {
         }
         System.out.println(STR."Attemps: \{attempts}.");
     }
+    /**
+     * Sorts the given array in ascending order using the selection sort algorithm.
+     *
+     * @param array the array to be sorted
+     */
     public static void selectionSorting(int[] array){
         int attempts = 0;
         for (int i = 0; i < array.length-1; i++) {
@@ -56,5 +62,24 @@ public class SortingAlgorithms {
             array[minIndex] = temp;
         }
         System.out.println(STR."Attempts: \{attempts}");
+    }
+    public static List<Integer> quickSorting(List<Integer> list){
+        if(list.size() <= 1)
+            return list;
+        List<Integer> lessThenPivot = new ArrayList<>();
+        List<Integer> greaterThenPivot = new ArrayList<>();
+        Integer pivot = list.getFirst();
+        for (int i = 1; i < list.size(); i++) {
+            if(list.get(i) <= pivot){
+                lessThenPivot.add(list.get(i));
+            } else {
+                greaterThenPivot.add(list.get(i));
+            }
+        }
+        list.clear();
+        list.addAll(quickSorting(lessThenPivot));
+        list.add(pivot);
+        list.addAll(quickSorting(greaterThenPivot));
+        return list;
     }
 }
