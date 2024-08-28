@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -29,6 +30,12 @@ public class Main {
 
         System.out.println("Quick Sorting");
         SortingAlgorithms.quickSorting(list);
+        System.out.println(STR."List: \{list}");
+
+        Collections.shuffle(list);
+        System.out.println(STR."List: \{list}");
+        System.out.println("Merge Sorting");
+        SortingAlgorithms.mergeSorting(list);
         System.out.println(STR."List: \{list}");
     }
 }

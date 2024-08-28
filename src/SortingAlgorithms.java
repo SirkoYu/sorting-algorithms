@@ -82,4 +82,44 @@ public class SortingAlgorithms {
         list.addAll(quickSorting(greaterThenPivot));
         return list;
     }
+
+    public static List<Integer> mergeSorting(List<Integer> list){
+        if( list.size() <= 1) {
+            return list;
+        }
+        int middle = list.size() / 2;
+
+        List<Integer> left = quickSorting(splitList(list,0,middle));
+        List<Integer> right = quickSorting(splitList(list,middle, list.size()));
+
+        list.clear();
+
+        int i=0, j=0;
+
+        while (i < left.size() && j < right.size()){
+            if(left.get(i) <= right.get(j)){
+                list.add(left.get(i));
+                i++;
+            } else{
+                list.add(right.get(j));
+                j++;
+            }
+        }
+        while (i < left.size()){
+            list.add(left.get(i));
+            i++;
+        }
+        while (j < right.size()){
+            list.add(right.get(j));
+            j++;
+        }
+        return list;
+    }
+    private static List<Integer> splitList(List<Integer> list, int start, int end){
+        List<Integer> newList = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            newList.add(list.get(i));
+        }
+        return newList;
+    }
 }
