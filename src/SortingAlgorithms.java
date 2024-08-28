@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class SortingAlgorithms {
 
     /**
@@ -13,5 +15,29 @@ public class SortingAlgorithms {
             if(array[i] > array[i+1]) return false;
         }
         return true;
+    }
+    public static void shuffleArray(int[] array) {
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1); // Generate a random index from 0 to i
+            // Swap array[i] with array[j]
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+    /**
+     * Sorts an array using the highly inefficient bogo sort algorithm.
+     * Bogo sort repeatedly shuffles the array until it is sorted.
+     *
+     * @param array the array to be sorted
+     */
+    public static void bogoSorting(int[] array){
+        int attempts = 0;
+        while (!isSorted(array)){
+            shuffleArray(array);
+            attempts++;
+        }
+        System.out.println(STR."Attemps: \{attempts}.");
     }
 }
